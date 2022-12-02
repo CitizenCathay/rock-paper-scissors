@@ -8,63 +8,65 @@
 </head>
 <body>
     <script>
-        function getComputerChoice() {
-            const options = ['Rock', 'Paper', 'Scissors'];
-            const computerChoice = Math.floor(Math.random() * options.length);
+        for (let i = 0; i < 5; i++) {
+            function getComputerChoice() {
+                const options = ['Rock', 'Paper', 'Scissors'];
+                const computerChoice = Math.floor(Math.random() * options.length);
 
-            console.log(`The computer has selected ${computerChoice,options[computerChoice]}`)
+                console.log(`The computer has selected ${computerChoice,options[computerChoice]}`)
 
-            return computerChoice,options[computerChoice];
+                return computerChoice,options[computerChoice];
+            }
+
+            function getPlayerChoice() {
+                const string = prompt('Enter your choice ');
+
+                console.log(`You have selected ${string}`)
+                return string;
+            }
+
+            const playerSelection = getPlayerChoice();
+            const computerSelection = getComputerChoice();
+
+            const str1 = playerSelection.toLowerCase();
+            const str2 = computerSelection.toLowerCase();
+
+            function playRound() {
+                if ((computerSelection == 'Rock') && (str1 == 'scissors')) {
+                    console.log(`${computerSelection} beats ${playerSelection}! You lose.`);
+                }
+
+                else if ((computerSelection == 'Rock') && (str1 == 'paper')) {
+                    console.log(`${playerSelection} beats ${computerSelection}! You win.`);
+                }
+
+                else if ((computerSelection == 'Paper') && (str1 == 'rock')) {
+                    console.log(`${computerSelection} beats ${playerSelection}! You lose.`);
+                }
+
+                else if ((computerSelection == 'Paper') && (str1 == 'scissors')) {
+                    console.log(`${playerSelection} beats ${computerSelection}! You win.`);
+                }
+
+                else if ((computerSelection == 'Scissors') && (str1 == 'paper')) {
+                    console.log(`${computerSelection} beats ${playerSelection}! You lose.`);
+                }
+
+                else if ((computerSelection == 'Scissors') && (str1 == 'rock')) {
+                    console.log(`${playerSelection} beats ${computerSelection}! You win.`);
+                }
+
+                else if (str1 == str2) {
+                    console.log(`Both ${str1} and ${str2} don't beat each other. It's a draw!`);
+                }
+
+                else {
+                    console.log(`Input '${playerSelection}' is invalid, please try again.`)
+                }
+            }
+
+            playRound();
         }
-
-        function getPlayerChoice() {
-            const string = prompt('Enter your choice ');
-
-            console.log(`You have selected ${string}`)
-            return string;
-        }
-
-        const playerSelection = getPlayerChoice();
-        const computerSelection = getComputerChoice();
-
-        const str1 = playerSelection.toLowerCase();
-        const str2 = computerSelection.toLowerCase();
-
-        function playRound() {
-            if ((computerSelection == 'Rock') && (str1 == 'scissors')) {
-                console.log(`${computerSelection} beats ${playerSelection}! You lose.`);
-            }
-
-            else if ((computerSelection == 'Rock') && (str1 == 'paper')) {
-                console.log(`${playerSelection} beats ${computerSelection}! You win.`);
-            }
-
-            else if ((computerSelection == 'Paper') && (str1 == 'rock')) {
-                console.log(`${computerSelection} beats ${playerSelection}! You lose.`);
-            }
-
-            else if ((computerSelection == 'Paper') && (str1 == 'scissors')) {
-                console.log(`${playerSelection} beats ${computerSelection}! You win.`);
-            }
-
-            else if ((computerSelection == 'Scissors') && (str1 == 'paper')) {
-                console.log(`${computerSelection} beats ${playerSelection}! You lose.`);
-            }
-
-            else if ((computerSelection == 'Scissors') && (str1 == 'rock')) {
-                console.log(`${playerSelection} beats ${computerSelection}! You win.`);
-            }
-
-            else if (str1 == str2) {
-                console.log(`Both ${str1} and ${str2} don't beat each other. It's a draw!`);
-            }
-
-            else {
-                console.log(`Input '${playerSelection}' is invalid, please try again.`)
-            }
-        }
-
-        playRound();
     </script>
 </body>
 </html>

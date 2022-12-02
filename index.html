@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice() {
+            const options = ['Rock', 'Paper', 'Scissors'];
+            const computerChoice = Math.floor(Math.random() * options.length);
+
+            console.log(computerChoice,options[computerChoice]);
+            return computerChoice,options[computerChoice];
+        }
+
+        function getPlayerChoice() {
+            const string = prompt('Enter your choice ');
+
+            console.log(string)
+            return string;
+        }
+
+        const playerSelection = getPlayerChoice();
+        const computerSelection = getComputerChoice();
+
+        console.log(playerSelection)
+        console.log(computerSelection)
+
+        const str1 = playerSelection.toLowerCase();
+        console.log(str1)
+    </script>
+</body>
+</html>

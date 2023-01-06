@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 <body>
+    <div class="sectionWrapper">
+        <h1>Rock Paper Scissors by Kurai</h1>
+        <h2>First to 5 points wins!</h2>
+    
+        <div id="choices">
+            <button><img src="./imgs/Rock.png" alt="Rock option"></button>
+            <button><img src="./imgs/Paper.png" alt="Rock option"></button>
+            <button><img src="./imgs/Scissors.png" alt="Rock option"></button>
+        </div>
+        <div class="scoreSection">
+
+        </div>
+    </div>
     <script>
         for (let i = 0; i < 5; i++) {
             function getComputerChoice() {
@@ -19,7 +33,7 @@
             }
 
             function getPlayerChoice() {
-                const string = prompt('Enter your choice ');
+                //const string = prompt('Enter your choice ');
 
                 console.log(`You have selected ${string}`)
                 return string;
@@ -66,6 +80,7 @@
             }
 
             playRound();
+            document.getElementById("demo").addEventListener("click", myFunction);
         }
     </script>
 </body>

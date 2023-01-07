@@ -13,16 +13,16 @@
         <h2>First to 5 points wins!</h2>
     
         <div id="choices">
-            <button><img src="./imgs/Rock.png" alt="Rock option"></button>
-            <button><img src="./imgs/Paper.png" alt="Rock option"></button>
-            <button><img src="./imgs/Scissors.png" alt="Rock option"></button>
+            <button class = "btnChoice"><img src="./imgs/Rock.png" alt="Rock option"></button>
+            <button class = "btnChoice"><img src="./imgs/Paper.png" alt="Rock option"></button>
+            <button class = "btnChoice"><img src="./imgs/Scissors.png" alt="Rock option"></button>
         </div>
         <div class="scoreSection">
 
         </div>
     </div>
     <script>
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 5; i++) {                                                               //function needs to be refactored
             function getComputerChoice() {
                 const options = ['Rock', 'Paper', 'Scissors'];
                 const computerChoice = Math.floor(Math.random() * options.length);
@@ -32,7 +32,7 @@
                 return computerChoice,options[computerChoice];
             }
 
-            function getPlayerChoice() {
+            function getPlayerChoice() {                                                             //function needs to be refactored
                 //const string = prompt('Enter your choice ');
 
                 console.log(`You have selected ${string}`)
@@ -40,12 +40,12 @@
             }
 
             const playerSelection = getPlayerChoice();
-            const computerSelection = getComputerChoice();
+            const computerSelection = getComputerChoice();                                          //const does not need to refactored
 
             const str1 = playerSelection.toLowerCase();
-            const str2 = computerSelection.toLowerCase();
+            const str2 = computerSelection.toLowerCase();                                           //does not need to be refactored
 
-            function playRound() {
+            function playRound() {                                                                  //function needs to be refactored
                 if ((computerSelection == 'Rock') && (str1 == 'scissors')) {
                     console.log(`${computerSelection} beats ${playerSelection}! You lose.`);
                 }
@@ -80,7 +80,11 @@
             }
 
             playRound();
-            document.getElementById("demo").addEventListener("click", myFunction);
+            document.getElementById("rock").addEventListener("onclick", toConsole);
+
+            function toConsole() {
+                console.log("clicked");
+            }
         }
     </script>
 </body>

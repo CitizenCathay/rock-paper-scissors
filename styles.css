@@ -20,15 +20,24 @@ body {
   h2 {
     font-size: 30px;
     text-align: center;
-    margin-top: -1vh;
+    margin-top: -2vh;
   }
 
   button {
     background-color: transparent;
     border: none;
     margin-top: 4vh;
+    
   }
 
   img {
     width: 200px;
+  }
+
+  .btnChoice {
+    transition: 125ms;
+  }
+
+  .btnChoice:hover {        /*button hover animation; enlarges button when mouse hovering over*/      
+    transform: scale(1.2) 
   }

@@ -13,78 +13,68 @@
         <h2>First to 5 points wins!</h2>
     
         <div id="choices">
-            <button class = "btnChoice"><img src="./imgs/Rock.png" alt="Rock option"></button>
-            <button class = "btnChoice"><img src="./imgs/Paper.png" alt="Rock option"></button>
-            <button class = "btnChoice"><img src="./imgs/Scissors.png" alt="Rock option"></button>
+            <button class="selection" data-selection="rock"><img src="./imgs/Rock.png" alt="Rock option"></button>
+            <button class="selection" data-selection="paper"><img src="./imgs/Paper.png" alt="Rock option"></button>
+            <button class="selection" data-selection="scissors"><img src="./imgs/Scissors.png" alt="Rock option"></button>
         </div>
         <div class="scoreSection">
-
+            <p class="score-title">Score</p>
+            <p class="score">(YOU) 0 : 0 (BOT)</p>
         </div>
     </div>
     <script>
-        for (let i = 0; i < 5; i++) {                                                               //function needs to be refactored
-            function getComputerChoice() {
-                const options = ['Rock', 'Paper', 'Scissors'];
-                const computerChoice = Math.floor(Math.random() * options.length);
+        let userScore = 0;
+        let computerScore = 0;
+        const selection = [
+            {
+                name: 'rock',
+                beats: 'scissors',
+                losesTo: 'paper'
+            },
+            {
+                name: 'scissors',
+                beats: 'paper',
+                losesTo: 'rock'
+            },
+            {
+                name: 'paper',
+                beats: 'rock',
+                losesTo: 'scissors'
+            }
+        ]
 
-                console.log(`The computer has selected ${computerChoice,options[computerChoice]}`)
+        const btnChoices = document.querySelectorAll('[data-selection]'); 
 
-                return computerChoice,options[computerChoice];
+        btnChoices.forEach(selectionButton => {
+            selectionButton.addEventListener('click', e => {
+                const selectionName = selectionButton.dataset.selection
+                makeSelection(selectionName)
+            })
+        })
+
+        function makeSelection(selection) {
+            const computerSelection = getComputerChoice()
+            console.log(`Player has selected ${selection}`)
+
+            if (computerSelection == selection) {
+                console.log('draw')
             }
 
-            function getPlayerChoice() {                                                             //function needs to be refactored
-                //const string = prompt('Enter your choice ');
-
-                console.log(`You have selected ${string}`)
-                return string;
+            else if (computerSelection == selection.beats) {
+                console.log('You lost!')
             }
 
-            const playerSelection = getPlayerChoice();
-            const computerSelection = getComputerChoice();                                          //const does not need to refactored
+        }
 
-            const str1 = playerSelection.toLowerCase();
-            const str2 = computerSelection.toLowerCase();                                           //does not need to be refactored
+        function getComputerChoice() {
+            const options = ['rock', 'paper', 'scissors'];
+            const computerChoice = Math.floor(Math.random() * options.length);
 
-            function playRound() {                                                                  //function needs to be refactored
-                if ((computerSelection == 'Rock') && (str1 == 'scissors')) {
-                    console.log(`${computerSelection} beats ${playerSelection}! You lose.`);
-                }
+            console.log(`The computer has selected ${options[computerChoice]}`)
+            return options[computerChoice];
+        }
 
-                else if ((computerSelection == 'Rock') && (str1 == 'paper')) {
-                    console.log(`${playerSelection} beats ${computerSelection}! You win.`);
-                }
-
-                else if ((computerSelection == 'Paper') && (str1 == 'rock')) {
-                    console.log(`${computerSelection} beats ${playerSelection}! You lose.`);
-                }
-
-                else if ((computerSelection == 'Paper') && (str1 == 'scissors')) {
-                    console.log(`${playerSelection} beats ${computerSelection}! You win.`);
-                }
-
-                else if ((computerSelection == 'Scissors') && (str1 == 'paper')) {
-                    console.log(`${computerSelection} beats ${playerSelection}! You lose.`);
-                }
-
-                else if ((computerSelection == 'Scissors') && (str1 == 'rock')) {
-                    console.log(`${playerSelection} beats ${computerSelection}! You win.`);
-                }
-
-                else if (str1 == str2) {
-                    console.log(`Both ${str1} and ${str2} don't beat each other. It's a draw!`);
-                }
-
-                else {
-                    console.log(`Input '${playerSelection}' is invalid, please try again.`)
-                }
-            }
-
-            playRound();
-            document.getElementById("rock").addEventListener("onclick", toConsole);
-
-            function toConsole() {
-                console.log("clicked");
-            }
+        function playRound(selection) {
         }
     </script>
 </body>

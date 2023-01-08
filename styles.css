@@ -34,10 +34,30 @@ body {
     width: 200px;
   }
 
-  .btnChoice {
+  .selection {
     transition: 125ms;
   }
 
-  .btnChoice:hover {        /*button hover animation; enlarges button when mouse hovering over*/      
+  .selection:hover {        /*button hover animation; enlarges button when mouse hovering over*/      
     transform: scale(1.2) 
+  }
+
+  .score {
+    margin-top: -5vh;
+    font-size: 35px;
+    font-weight: 650;
+  }
+
+  .score-title {
+    font-size: 50px;
+    font-weight: 600;
+  }
+
+  p {
+    display: flex;
+    justify-content: center;
+  }
+
+  .playing {
+    transform: scale(2);
   }

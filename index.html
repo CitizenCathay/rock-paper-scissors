@@ -10,7 +10,6 @@
 <body>
     <div class="sectionWrapper">
         <h1>Rock Paper Scissors by Kurai</h1>
-        <h2>First to 5 points wins!</h2>
     
         <div id="choices">
             <button class="selection" data-selection="rock"><img src="./imgs/Rock.png" alt="Rock option"></button>
@@ -19,12 +18,16 @@
         </div>
         <div class="scoreSection">
             <p class="score-title">Score</p>
-            <p class="score">(YOU) 0 : 0 (BOT)</p>
+            <p class="score">(YOU)&nbsp;<span id ="userScore"></span> &nbsp;:&nbsp; <span id ="computerScore"></span>&nbsp;(BOT)</p>
+            <p id="gameMessage"></p>
+            <p id="winner"></p>
         </div>
     </div>
     <script>
         let userScore = 0;
         let computerScore = 0;
+        document.getElementById("userScore").innerHTML = userScore;
+        document.getElementById("computerScore").innerHTML = computerScore;
 
         const btnChoices = document.querySelectorAll('[data-selection]'); 
         btnChoices.forEach(selectionButton => {
@@ -36,22 +39,30 @@
 
         function makeSelection(selection) {
             const computerSelection = getComputerChoice()
-            console.log(`Player has selected ${selection}`)
 
             if (computerSelection == selection) {
                 console.log('draw')
+                document.getElementById("gameMessage").innerHTML = "Player and computer both picked " + selection + " It's a draw!";
             }
 
             else if ((computerSelection == 'rock' && selection == 'paper') || (computerSelection == 'paper' && selection == 'scissors') || (computerSelection == 'scissors' && selection == 'rock')) {
-                console.log('You won!')
-                userScore++
-                console.log(`Player has ${userScore} point(s)!`)
+                userScore += 1
+                document.getElementById("userScore").innerHTML = userScore;
+                document.getElementById("gameMessage").innerHTML = "Player's " + selection + " beats computer's " + computerSelection + "! One point for the player.";
+                
+                if (userScore == 5) {
+                    document.getElementById("winner").innerHTML = "Player has 5 points! The player wins."
+                }
             }
 
             else {
-                console.log('You lost!')
-                computerScore++
-                console.log(`Computer has ${computerScore} point(s)!`)
+                computerScore += 1
+                document.getElementById("computerScore").innerHTML = computerScore;
+                document.getElementById("gameMessage").innerHTML = "Computer's " + computerSelection + " beats player's " + selection + "!" + " One point for the computer!"
+                
+                if (computerScore == 5) {
+                    document.getElementById("winner").innerHTML = "Computer has 5 points! The computer wins."
+                }
             }
 
         }
@@ -62,9 +73,6 @@
 
             console.log(`The computer has selected ${options[computerChoice]}`)
             return options[computerChoice];
-        }
-
-        function playRound(selection) {
         }
     </script>
 </body>

@@ -1,7 +1,12 @@
 let userScore = 0;
+document.getElementById("userScore").textContent = userScore;
 let computerScore = 0;
-document.getElementById("userScore").innerHTML = userScore;
-document.getElementById("computerScore").innerHTML = computerScore;
+document.getElementById("computerScore").textContent = computerScore;
+const winningCombinations = {
+    rock: 'scissors',
+    paper: 'rock',
+    scissors: 'paper'
+};
 
 const btnChoices = document.querySelectorAll('[data-selection]'); 
 btnChoices.forEach(selectionButton => {
@@ -13,29 +18,29 @@ btnChoices.forEach(selectionButton => {
 
 function makeSelection(selection) {
 const computerSelection = getComputerChoice()
-
-    if (computerSelection == selection) {
-        console.log('draw')
-        document.getElementById("gameMessage").innerHTML = "Player and computer both picked " + selection + " It's a draw!";
-    }
-    else if ((computerSelection == 'rock' && selection == 'paper') || (computerSelection == 'paper' && selection == 'scissors') || (computerSelection == 'scissors' && selection == 'rock')) {
-        userScore += 1
-        document.getElementById("userScore").innerHTML = userScore;
-        document.getElementById("gameMessage").innerHTML = "Player's " + selection + " beats computer's " + computerSelection + "! One point for the player.";
-                
-        if (userScore == 5) {
-            document.getElementById("winner").innerHTML = "Player has 5 points! The player wins."
+    if (userScore != 5 && computerScore != 5) {
+        if (computerSelection == selection) {
+            document.getElementById("gameMessage").textContent = "Player and computer both picked " + selection + " It's a draw!";
         }
-    }
-    else {
-        computerScore += 1
-        document.getElementById("computerScore").innerHTML = computerScore;
-        document.getElementById("gameMessage").innerHTML = "Computer's " + computerSelection + " beats player's " + selection + "!" + " One point for the computer!"
+        else if ((computerSelection === winningCombinations[selection])) {
+            userScore += 1
+            document.getElementById("userScore").textContent = userScore;
+            document.getElementById("gameMessage").textContent = "Player's " + selection + " beats computer's " + computerSelection + "! One point for the player.";
                 
-        if (computerScore == 5) {
-            document.getElementById("winner").innerHTML = "Computer has 5 points! The computer wins."
+            if (userScore == 5) {
+                document.getElementById("winner").textContent = "5 points! You win."
+            }
         }
-    }
+        else {
+            computerScore += 1
+            document.getElementById("computerScore").textContent = computerScore;
+            document.getElementById("gameMessage").textContent = "Computer's " + computerSelection + " beats player's " + selection + "!" + " One point for the computer!"
+                
+            if (computerScore == 5) {
+                document.getElementById("winner").textContent = "Computer has 5 points! Game over, you lose."
+            }
+        }
+    } 
 }
 
 function getComputerChoice() {

@@ -25,26 +25,8 @@
     <script>
         let userScore = 0;
         let computerScore = 0;
-        const selection = [
-            {
-                name: 'rock',
-                beats: 'scissors',
-                losesTo: 'paper'
-            },
-            {
-                name: 'scissors',
-                beats: 'paper',
-                losesTo: 'rock'
-            },
-            {
-                name: 'paper',
-                beats: 'rock',
-                losesTo: 'scissors'
-            }
-        ]
 
         const btnChoices = document.querySelectorAll('[data-selection]'); 
-
         btnChoices.forEach(selectionButton => {
             selectionButton.addEventListener('click', e => {
                 const selectionName = selectionButton.dataset.selection
@@ -60,8 +42,16 @@
                 console.log('draw')
             }
 
-            else if (computerSelection == selection.beats) {
+            else if ((computerSelection == 'rock' && selection == 'paper') || (computerSelection == 'paper' && selection == 'scissors') || (computerSelection == 'scissors' && selection == 'rock')) {
+                console.log('You won!')
+                userScore++
+                console.log(`Player has ${userScore} point(s)!`)
+            }
+
+            else {
                 console.log('You lost!')
+                computerScore++
+                console.log(`Computer has ${computerScore} point(s)!`)
             }
 
         }

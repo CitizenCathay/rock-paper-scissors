@@ -1,14 +1,14 @@
-let userScore = 0;
-document.getElementById("userScore").textContent = userScore;
-let computerScore = 0;
-document.getElementById("computerScore").textContent = computerScore;
-const winningCombinations = {
+let userScore = 0;                                                      //initialise user score to 0
+document.getElementById("userScore").textContent = userScore;           //initialise user score in website
+let computerScore = 0;                                                  //initialise computer score to 0
+document.getElementById("computerScore").textContent = computerScore;   //initialise computer score in website
+const winningCombinations = {                                         
     rock: 'scissors',
-    paper: 'rock',
+    paper: 'rock',                                                      //create object of winning combinations to use in game logic
     scissors: 'paper'
 };
 
-const btnChoices = document.querySelectorAll('[data-selection]'); 
+const btnChoices = document.querySelectorAll('[data-selection]');       
 btnChoices.forEach(selectionButton => {
     selectionButton.addEventListener('click', e => {
     const selectionName = selectionButton.dataset.selection
@@ -16,11 +16,11 @@ btnChoices.forEach(selectionButton => {
     })
 })
 
-function makeSelection(selection) {
+function makeSelection(selection) {                                     //declare makeSelection function which takes in a parameter 'selection'
 const computerSelection = getComputerChoice()
-    if (userScore != 5 && computerScore != 5) {
+    if (userScore != 5 && computerScore != 5) {                         //if statement to stop game when either user or computer reaches 5 points
         if (computerSelection == selection) {
-            document.getElementById("gameMessage").textContent = "Player and computer both picked " + selection + " It's a draw!";
+            document.getElementById("gameMessage").textContent = "Player and computer both picked " + selection + " It's a draw!";  //returns a draw message to the HTML doc
         }
         else if ((computerSelection === winningCombinations[selection])) {
             userScore += 1
@@ -29,6 +29,7 @@ const computerSelection = getComputerChoice()
                 
             if (userScore == 5) {
                 document.getElementById("winner").textContent = "5 points! You win."
+                document.getElementById("restart").textContent = "Play again"
             }
         }
         else {
@@ -38,6 +39,7 @@ const computerSelection = getComputerChoice()
                 
             if (computerScore == 5) {
                 document.getElementById("winner").textContent = "Computer has 5 points! Game over, you lose."
+                document.getElementById("restart").textContent = "Play again"
             }
         }
     } 

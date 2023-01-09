@@ -60,11 +60,18 @@ body {
     margin-top: -4vh;
   }
 
+  #restart {
+    font-size: 40px;
+    font-weight: 900;
+    margin-top: -3vh;
+  }
+
   p {
     display: flex;
     justify-content: center;
   }
 
-  .playing {
-    transform: scale(2);
+  .scoreSection {
+    display: flex;
+    flex-direction: column;
   }

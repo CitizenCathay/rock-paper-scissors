@@ -2,19 +2,27 @@ let userScore = 0;                                                      //initia
 document.getElementById("userScore").textContent = userScore;           //initialise user score in website
 let computerScore = 0;                                                  //initialise computer score to 0
 document.getElementById("computerScore").textContent = computerScore;   //initialise computer score in website
+
 const winningCombinations = {                                         
     rock: 'scissors',
     paper: 'rock',                                                      //create object of winning combinations to use in game logic
     scissors: 'paper'
 };
 
-const btnChoices = document.querySelectorAll('[data-selection]');       
-btnChoices.forEach(selectionButton => {
-    selectionButton.addEventListener('click', e => {
-    const selectionName = selectionButton.dataset.selection
-    makeSelection(selectionName)
+const btnChoices = document.querySelectorAll('[data-selection]');
+const audioElement = document.getElementById('audio');
+console.log(audioElement);
+
+window.onload = function() {                                            //execute function immediately on load
+    btnChoices.forEach(selectionButton => {
+        selectionButton.addEventListener('click', e => {
+            const selectionName = selectionButton.dataset.selection
+            audioElement.currentTime = 0;                               //reset audio to start
+            audioElement.play();                                        //play sound effect when button clicked
+        makeSelection(selectionName)
+        })
     })
-})
+}
 
 function makeSelection(selection) {                                     //declare makeSelection function which takes in a parameter 'selection'
 const computerSelection = getComputerChoice()

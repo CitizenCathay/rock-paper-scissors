@@ -1,20 +1,20 @@
-let userScore = 0;                                                      //initialise user score to 0
-document.getElementById("userScore").textContent = userScore;           
-let computerScore = 0;                                                  //initialise computer score to 0
+let userScore = 0;                                                      //declare & initialise user score to 0
+document.getElementById("userScore").textContent = userScore;           //get a reference to the element with an id of userScore in the DOM
+let computerScore = 0;                                                  //declare & initialise computer score to 0
 document.getElementById("computerScore").textContent = computerScore;   
 
 const restartButton = document.createElement('button');                 //declare restartButton variable
-restartButton.textContent = 'Play again';
-const scoreSection = document.querySelector('.scoreSection');
-scoreSection.appendChild(restartButton);
-restartButton.style.display = 'none';
+restartButton.textContent = 'Play again';                               //set text content of restart button
+const scoreSection = document.querySelector('.scoreSection');           //get a reference to the first element with a class of scoreSection in the DOM
+scoreSection.appendChild(restartButton);                                //append the restartButton element to the scoreSection element as a child
+restartButton.style.display = 'none';                                   //set the display property of the restartButton element to 'none', which hides the element
 restartButton.id = 'resetGame';
 
-const winningCombinations = {                                         
-    rock: 'scissors',
-    paper: 'rock',                                                      //create object of winning combinations for use in game logic
-    scissors: 'paper'
-};
+const winningCombinations = {                                           //create an object with three properties 
+    rock: 'scissors',                                                   //value of each property is a string representing the item that beats it in the game of Rock Paper Scissors
+    paper: 'rock',                                                      
+    scissors: 'paper'                                                   //object is used in the makeSelection function to determine the winner of the game...
+};                                                                      //based on the choices made by the player and the computer
 
 const btnChoices = document.querySelectorAll('[data-selection]');
 const audioElement = document.getElementById('audio');
@@ -33,7 +33,7 @@ window.onload = function() {                                            //execut
 
 function makeSelection(selection) {                                     //declare makeSelection function which takes in a parameter 'selection'
 const computerSelection = getComputerChoice()
-    if (userScore != 5 && computerScore != 5) {                         //if statement to stop game when either user or computer reaches 5 points
+    if (userScore != 5 && computerScore != 5) {                         //checks if user/computer has 5 points. If true, do not execute the following code
         if (computerSelection == selection) {
             document.getElementById("gameMessage").textContent = "Player and computer both picked " + selection + " It's a draw!";  //returns a draw message to the HTML doc
         }

@@ -17,22 +17,21 @@ body {
     text-align: center;
   }
 
-  button {
+  button, 
+  .selection {
     background-color: transparent;
     border: none;
     margin-top: 4vh;
+    transition: 125ms;
     
   }
 
   img {
     width: 200px;
   }
-
-  .selection {
-    transition: 125ms;
-  }
-
-  .selection:hover {      /*button hover animation; enlarges button when mouse hovering over*/      
+  
+  .selection:hover,
+  #resetGame:hover {      /*button hover animation; enlarges button when mouse hovering over*/      
     transform: scale(1.2);
     background-color: #dfc44f;
     border-radius: 40px; 
@@ -69,12 +68,6 @@ body {
     margin-top: -2vh;
     padding: 20px;
     transition: 125ms;
-  }
-
-  #resetGame:hover {
-    transform: scale(1.2);
-    background-color: #dfc44f;
-    border-radius: 40px; 
   }
 
   p {

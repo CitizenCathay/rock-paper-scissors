@@ -60,10 +60,21 @@ body {
     margin-top: -4vh;
   }
 
-  #restart {
-    font-size: 40px;
+  #resetGame {
+    font-size: 35px;
     font-weight: 900;
-    margin-top: -3vh;
+    border-radius: 40px;
+    cursor: pointer;
+    max-width: 250px;
+    margin-top: -2vh;
+    padding: 20px;
+    transition: 125ms;
+  }
+
+  #resetGame:hover {
+    transform: scale(1.2);
+    background-color: #dfc44f;
+    border-radius: 40px; 
   }
 
   p {
@@ -73,5 +84,6 @@ body {
 
   .scoreSection {
     display: flex;
+    align-items: center;
     flex-direction: column;
   }

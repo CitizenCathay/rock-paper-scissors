@@ -1,11 +1,18 @@
 let userScore = 0;                                                      //initialise user score to 0
-document.getElementById("userScore").textContent = userScore;           //initialise user score in website
+document.getElementById("userScore").textContent = userScore;           
 let computerScore = 0;                                                  //initialise computer score to 0
-document.getElementById("computerScore").textContent = computerScore;   //initialise computer score in website
+document.getElementById("computerScore").textContent = computerScore;   
+
+const restartButton = document.createElement('button');                 //declare restartButton variable
+restartButton.textContent = 'Play again';
+const scoreSection = document.querySelector('.scoreSection');
+scoreSection.appendChild(restartButton);
+restartButton.style.display = 'none';
+restartButton.id = 'resetGame';
 
 const winningCombinations = {                                         
     rock: 'scissors',
-    paper: 'rock',                                                      //create object of winning combinations to use in game logic
+    paper: 'rock',                                                      //create object of winning combinations for use in game logic
     scissors: 'paper'
 };
 
@@ -37,7 +44,7 @@ const computerSelection = getComputerChoice()
                 
             if (userScore == 5) {
                 document.getElementById("winner").textContent = "5 points! You win."
-                document.getElementById("restart").textContent = "Play again"
+                restartButton.style.display = 'block';
             }
         }
         else {
@@ -47,7 +54,7 @@ const computerSelection = getComputerChoice()
                 
             if (computerScore == 5) {
                 document.getElementById("winner").textContent = "Computer has 5 points! Game over, you lose."
-                document.getElementById("restart").textContent = "Play again"
+                restartButton.style.display = 'block';
             }
         }
     } 
@@ -59,3 +66,7 @@ function getComputerChoice() {
     console.log(`The computer has selected ${options[computerChoice]}`)
     return options[computerChoice];
 }
+
+restartButton.addEventListener('click', function() {
+    location.reload();
+  });
